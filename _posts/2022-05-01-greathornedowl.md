@@ -3,6 +3,7 @@ layout: post
 title: "Great Horned Owl 大雕鸮"
 date: 2022-05-01
 author: "Yuerou Tang"
+thumbnail-img: /assets/original_assets/greathornedowl_0501/greathornedowl_0501_000.JPG
 
 ---
 

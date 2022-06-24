@@ -3,6 +3,7 @@ layout: post
 title: "Marsh Wren 长嘴沼泽鹪鹩"
 date: 2022-05-01
 author: "Yuerou Tang"
+thumbnail-img: /assets/original_assets/marshwren_0501/marshwren_0501_000.JPG
 
 ---
 
