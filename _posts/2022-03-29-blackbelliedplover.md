@@ -3,6 +3,7 @@ layout: post
 title: "Black-bellied Plover 灰斑鸻"
 date: 2022-03-26
 author: "Yuerou Tang"
+thumbnail_img: /assets/original_assets/blackbelliedplover_0326/blackbelliedplover_0326_000.JPG
 
 ---
 
