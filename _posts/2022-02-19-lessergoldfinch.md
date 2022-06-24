@@ -3,7 +3,7 @@ layout: post
 title: "Lesser Goldfinch 暗背金翅雀"
 date: 2022-02-19
 author: "Yuerou Tang"
-thumbnail_img: /assets/original_assets/lessergoldfinch_0219/lessergoldfinch_0219_000.JPG
+thumbnail-img: /assets/original_assets/lessergoldfinch_0219/lessergoldfinch_0219_000.JPG
 
 ---
 
