@@ -8,9 +8,9 @@ author: "Yuerou Tang"
 
 Met this Great Horned Owl in Yolo County. Definitely a surprise. Seeing its "horns" swinging in the wind was one of the most pleasant things of the day. 
 
- ![Great Horned Owl](https://github.com/yuerout/yuerout.github.io/blob/main/assets/greathornedowl_0501/greathornedowl_0501_000.JPG?raw=true)
+ ![Great Horned Owl](https://github.com/yuerout/yuerout.github.io/blob/master/assets/original_assets/greathornedowl_0501/greathornedowl_0501_000.JPG?raw=true)
 
 
- ![Great Horned Owl](https://github.com/yuerout/yuerout.github.io/blob/main/assets/greathornedowl_0501/greathornedowl_0501_001.JPG?raw=true)
+ ![Great Horned Owl](https://github.com/yuerout/yuerout.github.io/blob/master/assets/original_assets/greathornedowl_0501/greathornedowl_0501_001.JPG?raw=true)
 
 
