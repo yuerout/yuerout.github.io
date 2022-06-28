@@ -253,6 +253,7 @@ exclude:
   - screenshot.png
   - docs/
 
+url: "https://yuerout.github.io/"
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
