@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Northern rough-winged swallow"
-date: 2022-05-01
+title: "Northern Rough-winged Swallow"
+date: 2022-06-26
 author: "Yuerou Tang"
 thumbnail-img: /assets/original_assets/northernroughwingedswallow_0626/northernroughwingedswallow_0626_000.jpg
 
