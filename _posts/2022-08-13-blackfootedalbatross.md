@@ -4,6 +4,7 @@ title: "Black-footed Albatross 黑脚信天翁"
 date: 2022-08-13
 author: "Yuerou Tang"
 thumbnail-img: /assets/original_assets/blackfootedalbatross_0813/blackfootedalbatross_0813_000.JPG
+tags: [birds]
 
 ---
 Went on a pelagic trip with [Legacy Whale Watch](https://www.sdwhale.com/)!!

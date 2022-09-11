@@ -4,6 +4,7 @@ title: "Swainson's Hawk 斯温氏鵟"
 date: 2022-05-01
 author: "Yuerou Tang"
 thumbnail-img: /assets/original_assets/swainsonshawk_0501/swainsonshawk_0501_000.jpg
+tags: [birds]
 
 ---
 

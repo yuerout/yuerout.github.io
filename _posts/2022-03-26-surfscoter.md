@@ -4,6 +4,7 @@ title: "Surf Scoter 斑头海番鸭"
 date: 2022-03-26
 author: "Yuerou Tang"
 thumbnail-img: /assets/original_assets/surfscoter_0326/surfscoter_0326_000.JPG
+tags: [birds]
 
 
 ---

@@ -4,6 +4,7 @@ title: "Allen's Hummingbird"
 date: 2022-07-10
 author: "Yuerou Tang"
 thumbnail-img: /assets/original_assets/allenshummingbird_0710/allenshummingbird_0710_000.JPG
+tags: [birds]
 
 ---
 I'm not very sure if this was Allen's or Rufous Hummingbird, but according to iNaturalist identification, there was no notched tail feather, so it's likely Allen's. Tell me if I'm wrong! 

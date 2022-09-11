@@ -4,6 +4,7 @@ title: "Red-winged Blackbird 红翅黑鹂"
 date: 2022-05-01
 author: "Yuerou Tang"
 thumbnail-img: /assets/original_assets/redwingedblackbird_0501/redwingedblackbird_0501_000.JPG
+tags: [birds]
 
 ---
 
