@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            width: 1000px;
+            margin: auto;
+            text-align: center;
+            font-weight: 300;
+            font-family: 'Arial', sans-serif;
+            color: black;
+        }
+    </style>
+</head>
+<h1 id="cs-192-24-project-4-image-warping-and-mosaicing">CS 192-24 Project 4: [Auto]Stitching Photo Mosaics</h1>
+<h3 id="yuerou-tang">Yuerou Tang</h3>
+<h3 id="yuerou-tang">All images except the sticker picture are shot on Nikon D7500 with AF-P NIKKOR 18-55mm DX VR lens.
+</h3>
+<h1>Section 1: Image Warping and Mosaicing</h1>
+<h2 id="part-1-recovering-homography">Part 1: Recovering Homography</h2>
+<p>I first shot the images on Shattuck Ave. <br>
+    <img src="shattuck_left.jpg" alt="shattuck left" height="400px"> <br>
+    <img src="shattuck_right.jpg" alt="shattuck right" height="400px">
+</p>
+<p>I choose to project the left image of Shattuck Ave to the right image. First I calculated the projective
+    transformation matrix from left to right with 9 common points I selected from the two images. <br>
+    <img src="eq.jpg" alt="Equation" height="400px">
+</p>
+<h2 id="part-2-warping-images">Part 2: Warping Images</h2>
+<p>I used inverse warping to get the warped images. First I calculated the corresponding points in the original image of
+    the warped image with H_inverse. Then I used interpolation to find the value of the warped image pixel. To make sure
+    the full image is warped, I calculated the corresponding points in the warped image of the four corners in the
+    original image, then made a canvas based on coordinates of the four corners in the transformed image. </p>
+<p>Image of the left side of Shattuck Ave. warped: <br>
+    <img src="shattuck_left_warped.jpg" alt="Shattuck left warped" height="400px">
+</p>
+<h2 id="part-3-image-rectification">Part 3: Image Rectification</h2>
+<p>To test that my warping function works properly, I tested the function on this image of a sticker:<br>
+    <img src="sticker.jpg" alt="Sticker" height="400px"><br>
+    After rectification: <br>
+    <img src="sticker_warped.jpg" alt="sticker warped" height="400px">
+</p>
+<h2 id="part-4-blending">Part 4: Blending</h2>
+<p> Directly adding the two images of Shattuck Ave produces an overly bright overlap region. <br>
+    <img src="shattuck_addition.jpg" alt="shattuck addition" height="400px"><br>
+    To blend my images, I picked the seam to be in the overlap region of the two images, and use pyramid blending with a
+    mask. Everything left of the seam on the mask is 1 and right of the seam is 0.<br>
+    Mask: <br>
+    <img src="shattuck_mask.jpg" alt="shattuck mask" height="400px" style="border: 1px solid black;"> <br>
+    Stitched and Blended:<br>
+    <img src="shattuck_stitched.jpg" alt="shattuck stitched" height="400px"><br>
+</p>
+<h2 id="some-other-results-">Some other results:</h2>
+<p>VLSB: <br>
+    <img src="vlsb_left.jpg" alt="vlsb left" height="400px"><br>
+    <img src="vlsb_middle.jpg" alt="vlsb middle" height="400px"><br>
+    Stitched:<br>
+    <img src="vlsb_left_middle_2.jpg" alt="vlsb stitched" height="400px"><br>
+</p>
+<p>Me in front of Engineering Building:<br>
+    <img src="me_left.jpg" alt="me left" height="400px"><br>
+    <img src="me_right.jpg" alt="me right" height="400px"><br>
+    Stitched:<br>
+    <img src="me_complete.jpg" alt="me complete" height="400px"><br>
+    After some cropping:<br>
+    <img src="me_complete_cropped.jpg" alt="me cropped" height="400px"><br>
+    Wow look at me and myself!<br>
+<h2>What I learned:</h2>
+This is a very cool project!! I learned how to make my own panorama and how to compute homography. It's not magic
+anymore! This project also utilized some techniques from previous projects such as pyramid blending and inverse warp.
+</p>
+<br>
+<br>
+
+
+<h1 id="part-2-feature-matching-for-autostitching">Section 2 Feature Matching for Autostitching</h1>
+<p>In the previous part, the transformation was computed from the points that I manually selected. In this part, I
+    implemented automatic keypoint detection.</p>
+<h2 id="step-0-harris-corner-detector">Step 0: Harris Corner Detector</h2>
+<p>I first applied the Harris Coner Detector to the image. I changed the <code>min_distance</code> parameter in
+    <code>peak_local_max</code> to 5 to reduce the number of corners.<br>
+    <img src="harris_corners.jpg" alt="Harris Corner Demo" height="400px">
+</p>
+<h2 id="step-1-adaptive-non-maximal-suppression">Step 1: Adaptive Non-Maximal Suppression</h2>
+<p>We obtained a lot of interest points from the previous step. However, some points are trivial and have very low
+    strength. To suppress this points, I calculated the minimum suppression radius for all the interest points in the
+    image.<br>
+    <img src="anms.png" alt="ANMS formula"><br>
+    Intuitively, this formula makes sense, because if a interest point is not trivial, then in the neighborhood it
+    resides in, it should be the most significant point in the neighborhood. If this neighborhood is very large, then
+    this point should be very significant. Therefore we rank the minimum suppression radius of all the interest points,
+    and take the top 500 points to be our result for this step.<br>
+    <img src="anms_img.jpg" alt="ANMS result" height="400px">
+</p>
+<h2 id="step-2-feature-descriptor-extraction">Step 2: Feature Descriptor extraction</h2>
+<p>I downscaled the image by 0.2 (40x40 --&gt; 8x8) and took 8x8 patches from the image according to the coordinates of
+    the interest points. Then I normalized the features descriptors.
+    One example feature:<br>
+    <img src="one_feature.jpg" alt="One feature" height="200px"><br>
+    Where the feature is on the image:<br>
+    <img src="feature.jpg" alt="feature location" height="400px"><br>
+</p>
+<h2 id="step-3-feature-matching">Step 3: Feature Matching</h2>
+<p>With the features, it possible to filter out some interest points that don&#39;t look the same. By using Lowe&#39;s
+    trick, which says if the best match doesn&#39;t beat the second best match by too much, then both of them are not
+    the correct match, we can further reduce the number of interest points.<br>
+    <img src="shattuck_left_lowe.jpg" alt="shattuck left matched features" height="400px"><br>
+    <img src="shattuck_right_lowe.jpg" alt="shattuck right matched features" height="400px">
+</p>
+<h2 id="step-4-ransac">Step 4: RANSAC</h2>
+<p>RANSAC filters out spatially inconsistent points. First, it randomly select a group of 4 points in the source image,
+    then computes a homography based on these four points. Then it compute the transformation of all the source points
+    based on the homography, and checked the deviation of calculated points location from the actual point location in
+    the destination. Points with a smaller deviation are considered inliers. This process is then repeated many times,
+    and the largest group of inliers is considered the final spatially consistent points. (RANSAC is very robust from my
+    observation)<br>
+    <img src="shattuck_left_ransac.jpg" alt="shattuck left ransac" height="400px"><br>
+    <img src="shattuck_right_ransac.jpg" alt="shattuck right ransac" height="400px">
+</p>
+<h2 id="final-result">Final Result</h2>
+<p><img src="shattuck_auto.jpg" alt="shattuck auto" height="400px"></p>
+<h2 id="gallery">Gallery</h2>
+<h3 id="same-pictures-from-part-1-">Same pictures from part 1:</h3>
+<p>VLSB:<br>
+    <img src="vlsb_auto.jpg" alt="vlsb auto" height="400px">
+</p>
+<p>Me in front of Engineering Stitched:<br>
+    <img src="me_auto.jpg" alt="me auto" height="400px"><br>
+    Cropped:<br>
+    <img src="me_auto_cropped.jpg" alt="me auto cropped" height="400px">
+</p>
+<h3 id="some-new-pictures-">Some new pictures:</h3>
+Me on two chairs:<br>
+<p><img src="chair_left.jpg" alt="chair left" height="400px">
+    <img src="chair_right.jpg" alt="chair right" height="400px"><br>
+    Stitched:<br>
+    <img src="chair_auto.jpg" alt="chair" height="400px"><br>
+    Cropped:<br>
+    <img src="chair_auto_cropped.jpg" alt="On chair near Warren cropped" height="400px">
+</p>
+Copy pasted me:<br>
+<p><img src="warren_left.jpg" alt="warren left" height="400px"><br>
+    <img src="warren_right.jpg" alt="warren right" height="400px"><br>
+    Stitched:<br>
+    <img src="warren_auto.jpg" alt="warren" height="400px">
+</p>
+<h2 id="what-have-i-learned">What have I learned</h2>
+<p>This is so far my favorite project. In summer when I was working for an organization, they asked me to read a paper
+    which used SIFT features for pairing images together. Understanding that paper was very hard for me -- it took me a
+    week to understand what was going on with Lowe&#39;s ratio test in the paper. I also skipped the RANSAC section
+    completely because I could not understand it. 194-26 explained those to me very clearly, and I feel so proud of
+    myself for implementing them in this project :-D</p>
