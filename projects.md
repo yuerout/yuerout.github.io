@@ -17,5 +17,5 @@ This map contains the range of all the species that Professor David Wake had des
 
 ## [CS 194-26 Project 3: Face Morphing](projects/194-26_project_3/index.html)
 We've all seen cool face morphing GIF on the Internet. But how?
-<a href = "https://yuerout.github.io/projects//194-26_project_3/index.html"><img src = "projects/194-26_project_3/yuerou_george.gif" alt = "My face morphed to George Clooney's face" width = "50%"></img></a><br>
+<a href = "https://yuerout.github.io/projects/194-26_project_3/index.html"><img src = "projects/194-26_project_3/yuerou_george.gif" alt = "My face morphed to George Clooney's face" width = "50%"></img></a><br>
  Yeah that's my face morphed into George Clooney's face!
