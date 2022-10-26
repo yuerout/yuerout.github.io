@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            width: 1000px;
+            margin: auto;
+            text-align: center;
+            font-weight: 300;
+            font-family: 'Arial', sans-serif;
+            color: black;
+        }
+        
+        
+    </style>
+</head>
+
+<body>
+    <h1 id="cs-194-26-project-3-face-morphing">CS 194-26 Project 3: Face Morphing</h1>
+    <h2> Yuerou Tang</h2>
+    <h2 id="part-1-defining-correspondences">Part 1. Defining Correspondences</h2>
+    <p>For this part, I manually defined 45 points and added four edge points based on the shape of the image. One of
+        the
+        things I noticed for selecting keypoints is that since my lip&#39;s shape differs from George&#39;s a lot, I had
+        to
+        select more points for the lip to decrease the ghosting effect. </p>
+    <p><br>
+        Picture of me:<br>
+        <img src="yuerou.jpg" alt="Yuerou" width="400px"><br>
+        Keypoints on my face defined by hand: <br>
+        <img src="yuerou_keypoints.jpg" alt="Yuerou&#39;s Keypoints" width="400px"> <br>
+        Picture of George: <br>
+        <img src="george.jpg" alt="George" width="400px"><br>
+        Keypoints on George&#39;s face defined by hand: <br>
+        <img src="george_keypoints.jpg" alt="George&#39;s Keypoints" width="400px">
+    </p>
+    <p>(Triangulation here is just for demo purpose -- I did not use triangulation on original faces)</p>
+    <h2 id="part-2-computing-the-mid-way-face-">Part 2. Computing the &quot;Mid-way Face&quot;</h2>
+    <p>Next I computed the midway points between my face and Georges, and computed a trigulation with Delaunay
+        triangles:<br>
+        <img src="midway_points.jpg" alt="Midway points triangulation" width="400px">
+    </p>
+    <p>Next, I tried to compute the affine matrix <code>A</code> for each triangle from the original images (me/George)
+        to
+        the midway face triangle. Then I took the inverse of <code>A</code> and got the inverse transformation from the
+        midway face triangle to the original face triangle. This inverse matrix will tell us where each pixel in the
+        midway
+        face comes from, so that we can obtain the color information of this pixel from its origin in the original
+        images.
+        Ideally, it&#39;s a bijection, but usually the result of inverse transformation is in decimal, which means that
+        the
+        origin of the midway triangle pixel is in between two pixels in the original images. To get the exact value of
+        the
+        midway pixel, I interpolate the nearby pixels in the original image to get a value for the color of the midway
+        pixel. <br>
+        <img src="midway_face.jpg" alt="Midway Face" width="400px">
+    </p>
+    <h2 id="part-3-the-morph-sequence">Part 3. The Morph Sequence</h2>
+    <p>In this part, I produced a sequence of images with different <code>warp_frac</code> and
+        <code>dissolve_frac</code>,
+        which controls the amount of warping and dissolving for each originla picture (In the midway face, I set both to
+        0.5). The complete sequence is here: <br>
+        <img src="yuerou_george.gif" alt="Morph Sequence" width="400px">
+    </p>
+    <h2 id="part-4-the-mean-face-of-a-population">Part 4. The &quot;Mean face&quot; of a population</h2>
+    <p>In this part, I used the Danes dataset of faces with neutral expressions. The resulting average face shape looks
+        like
+        this: <br>
+        <img src="average_pop_points.jpg" alt="Average Population Face points" width="400px"> <br>
+        Some faces morphed into the average shape: <br>
+        <img src="example1_original.jpg" alt="Example1 Original" width="400px">
+        <img src="example1_morphed.jpg" alt="Example1 Morphed" width="400px">
+    </p> 
+    <p><img src="example2_original.jpg" alt="Example2 Original" width="400px">
+        <img src="example2_morphed.jpg" alt="Example2 Morphed" width="400px">
+    </p>
+    <p><img src="example3_original.jpg" alt="Example3 Original" width="400px">
+        <img src="example3_morphed.jpg" alt="Example3 Morphed" width="400px"> <br>
+        The final resulting average face:<br>
+        <img src="pop_average_face.jpg" alt="Population Average Face" width="400px">
+    </p>
+    <p>To my face warped into the average face&#39;s geometry, I cropped and resize the average face and my face to be
+        of
+        the same dimension:</p> <br>
+    <p><img src="yuerou_cropped.jpg" alt="Yuerou Cropped" width="200px">
+        <img src="yuerou_morphed_to_average.jpg" alt="Yuerou Morphed to Average" width="200px"> <br>
+        <img src="average_face_cropped.jpg" alt="Average face Cropped" width="200px">
+        <img src="average_morphed_to_yuerou.jpg" alt="Average Morphed to Yuerou" width="200px">
+    </p>
+    <h2 id="part-5-caricatures-extrapolating-from-the-mean">Part 5. Caricatures: Extrapolating from the mean</h2>
+    <p>I subtract the mean face points from my face&#39;s points to get the delta, and then multiplied delta by
+        different
+        coefficients to obtain caricatures of me on different levels.
+        <div class="seris"><img src="caricatures.jpg" alt="Caricatures"></div>
+    </p>
+    <h2 id="bells-and-whistles-make-me-smile-">Bells and Whistles: Make me smile!</h2>
+    <p>I look very unhappy on this pictures, so I tried to make myself smile. First, I selected all the pictures which the person smiled 
+        without showing their teeth (because I did not show my teeth). Then, I computed the mean face
+        of
+        all the smiling faces: <br>
+        <img src="smiling_average_face.jpg" alt="smiling_average_face" width="400px"><br>
+        To make my smile more natural, I also defined a new set of keypoints with more keypoints on lips.<br>
+        <img src="smiling_face_keypoints.jpg" alt="Smiling face keypoints" width = "400px">
+        <img src="smiling_yuerou_keypoints.jpg" alt="Smiling Yuerou keypoints" width = "400px"><br>
+        To get the &quot;smiling vector&quot;, I subtract my face from the smiling average and added the smiling vector
+        to
+        my face.
+        <div><img src="smile_more_2.jpg" alt="Smile More"></div>
+        I&#39;m smiling happily, in case you can&#39;t tell :-)
+    </p>
+</body>
+
+</html>
