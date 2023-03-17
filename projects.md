@@ -3,7 +3,13 @@ layout: page
 ---
 
 Here are some projects that I've completed. Some of them are class projects. 
-## [CS 194-26 Project 4: [Auto]Stitching Photo Mosaics](projects/194-26_project_4B/index.html)
+## [Pathtracer](https://cal-cs184-student.github.io/project-webpages-sp23-qs/proj3-1/index.html)
+Cool project in which we implemented ray tracing algorithms
+<a href = "https://cal-cs184-student.github.io/project-webpages-sp23-qs/proj3-1/index.html"><img src = "https://cal-cs184-student.github.io/project-webpages-sp23-qs/proj3-1/images/part5/CBbunny_2048_1_5_adap.png" alt = "Rendered Bunny" width = "50%"></a><br>
+
+<hr>
+
+## [[Auto]Stitching Photo Mosaics](projects/194-26_project_4B/index.html)
 How do I create a panorama from seperate pictures? Look here!
 [![Me in Front of Eng](projects/194-26_project_4B/me_auto_cropped.jpg)](194-26_project_4B/index.html)
 
