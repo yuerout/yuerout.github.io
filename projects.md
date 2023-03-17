@@ -5,7 +5,7 @@ layout: page
 Here are some projects that I've completed. Some of them are class projects. 
 ## [Pathtracer](https://cal-cs184-student.github.io/project-webpages-sp23-qs/proj3-1/index.html)
 Cool project in which we implemented ray tracing algorithms. <br>
-<a href = "https://cal-cs184-student.github.io/project-webpages-sp23-qs/proj3-1/index.html"><img src = "https://cal-cs184-student.github.io/project-webpages-sp23-qs/proj3-1/images/part5/CBbunny_2048_1_5_adap.png" alt = "Rendered Bunny" width = "50%"></a><br>
+<p align = "middle"><a href = "https://cal-cs184-student.github.io/project-webpages-sp23-qs/proj3-1/index.html"><img src = "https://cal-cs184-student.github.io/project-webpages-sp23-qs/proj3-1/images/part5/CBbunny_2048_1_5_adap.png" alt = "Rendered Bunny" width = "50%" align = "middle"></a></p><br>
 
 <hr>
 
@@ -23,5 +23,6 @@ This map contains the range of all the species that Professor David Wake had des
 
 ## [Face Morphing](projects/194-26_project_3/index.html)
 We've all seen cool face morphing GIF on the Internet. But how?
-<a href = "https://yuerout.github.io/projects/194-26_project_3/index.html"><img src = "https://github.com/yuerout/yuerout.github.io/blob/master/projects/194-26_project_3/yuerou_george.gif?raw=true" alt = "My face morphed to George Clooney's face" width = "50%"></a><br>
+<p align = "middle">
+<a href = "https://yuerout.github.io/projects/194-26_project_3/index.html"><img src = "https://github.com/yuerout/yuerout.github.io/blob/master/projects/194-26_project_3/yuerou_george.gif?raw=true" alt = "My face morphed to George Clooney's face" width = "50%"></a></p><br>
  Yeah that's my face morphed into George Clooney's face!
